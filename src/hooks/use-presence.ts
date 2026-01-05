@@ -50,7 +50,7 @@ export function usePresence() {
       const userIdsArray = Array.from(dmUserIds);
       const { data } = await supabase
         .from('users')
-        .select('id, full_name, avatar_url, status, status_message')
+        .select('id, email, full_name, avatar_url, status, status_message, last_seen, created_at, updated_at')
         .in('id', userIdsArray);
 
       if (data) {

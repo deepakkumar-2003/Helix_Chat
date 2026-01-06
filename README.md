@@ -115,8 +115,26 @@ See `supabase/schema.sql` for the complete schema with Row Level Security polici
 
 1. Push to GitHub
 2. Import to Vercel
-3. Add environment variables
+3. Add environment variables in Vercel:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `NEXT_PUBLIC_APP_URL` (set to your Vercel URL, e.g., `https://your-app.vercel.app`)
+   - `SUPABASE_SERVICE_ROLE_KEY` (optional)
 4. Deploy
+
+#### Important: Configure Supabase for Production
+
+After deployment, you must configure your Supabase project:
+
+1. Go to [Supabase Dashboard](https://app.supabase.com)
+2. Select your project
+3. Navigate to **Authentication** → **URL Configuration**
+4. Add your deployed URLs to **Redirect URLs**:
+   - `https://your-app.vercel.app/auth/callback`
+   - `https://your-custom-domain.com/auth/callback` (if applicable)
+   - Keep `http://localhost:3000/auth/callback` for local development
+5. Set **Site URL** to your production URL (e.g., `https://your-app.vercel.app`)
+6. Click **Save**
 
 ### Other Platforms
 
@@ -124,6 +142,8 @@ See `supabase/schema.sql` for the complete schema with Row Level Security polici
 npm run build
 npm start
 ```
+
+Make sure to set the `NEXT_PUBLIC_APP_URL` environment variable to your deployed URL.
 
 ## License
 
